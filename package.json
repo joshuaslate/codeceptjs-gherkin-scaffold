@@ -1,0 +1,57 @@
+{
+	"name": "codeceptjs-gherkin-scaffold",
+	"displayName": "codeceptjs-gherkin-scaffold",
+	"description": "Generates the boilerplate for a CodeceptJS steps file based on a Gherkin feature file",
+	"version": "1.0.0",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.generateStepsFromFeatures",
+		"onCommand:extension.generateStepsFromAllFeatures"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.generateStepsFromFeatures",
+				"title": "Generate Steps from Feature"
+			},
+			{
+				"command": "extension.generateStepsFromAllFeatures",
+				"title": "Generate Steps from All Features"
+			}
+		],
+		"menus": {
+			"editor/context": [{
+					"when": "resourceExtname == .feature",
+					"command": "extension.generateStepsFromFeatures",
+					"title": "Generate Steps from Feature",
+					"group": "1_modification@1"
+			}]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mkdirp": "^0.5.2",
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^8.10.25",
+		"tslint": "^5.8.0",
+		"typescript": "^3.1.4",
+		"vscode": "^1.1.25"
+	},
+	"dependencies": {
+		"mkdirp": "^0.5.1",
+		"node-cache": "^4.2.0",
+		"type-cacheable": "^0.1.9"
+	}
+}
