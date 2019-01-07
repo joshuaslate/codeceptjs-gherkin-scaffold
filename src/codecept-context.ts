@@ -7,7 +7,7 @@ import { useNodeCacheAdapter, Cacheable, CacheClear } from 'type-cacheable';
 import { VSCodeWindow } from './vscode.interface';
 import { IDisposable } from './disposable.interface';
 import { CodeceptConfig, GherkinConfig } from './codecept-config.types';
-import { getFile, doesFileExist, canWriteFile } from './utils/fs-utils';
+import { getFile, doesFileExist, canWriteFile, getAbsolutePath } from './utils/fs-utils';
 import { StepGenerator } from './step-generator';
 
 const CACHE_KEYS = {
@@ -40,7 +40,7 @@ export class CodeceptContext implements IDisposable {
       configFile = await getFile(configPath);
     } catch (err) {
       const userGivenConfigFile = await this.promptForCodeceptConfigPath();
-      configPath = path.resolve(workspaceRoot, userGivenConfigFile || '');
+      configPath = getAbsolutePath(userGivenConfigFile || '', workspaceRoot);
       configFile = await getFile(configPath);
     }
 
@@ -82,7 +82,7 @@ export class CodeceptContext implements IDisposable {
     // this can be abstracted out as an argument for prompt
     const options: InputBoxOptions = {
       ignoreFocusOut: true,
-      prompt: `Path to Codecept config file (typically codecept.json) relative to ${this.workspaceRoot}.`,
+      prompt: `Path to Codecept config file (typically codecept.json) relative to ${this.workspaceRoot}, or an absolute path.`,
       placeHolder: 'codecept.json',
       validateInput: this.validateCodeceptConfigPath(this.workspaceRoot),
     };
@@ -96,7 +96,8 @@ export class CodeceptContext implements IDisposable {
         return 'Path to Codecept config is required';
       }
   
-      const givenPath = path.resolve(workspaceRoot, configPath);
+      const givenPath = getAbsolutePath(configPath, workspaceRoot);
+
       const [ fileExists, canWrite ] = await Promise.all([doesFileExist(givenPath), canWriteFile((givenPath))]);
 
   
@@ -117,7 +118,7 @@ export class CodeceptContext implements IDisposable {
     // this can be abstracted out as an argument for prompt
     const options: InputBoxOptions = {
       ignoreFocusOut: true,
-      prompt: `Path to Gherkin step definition JavaScript files relative to ${this.workspaceRoot}.`,
+      prompt: `Path to Gherkin step definition JavaScript files relative to ${this.workspaceRoot}, or an absolute path.`,
       value: guess,
     };
 

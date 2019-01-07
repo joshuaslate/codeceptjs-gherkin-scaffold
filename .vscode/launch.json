@@ -10,7 +10,7 @@
 			"request": "launch",
 			"runtimeExecutable": "${execPath}",
 			"args": [
-				"/Users/joshuaslate/workspace/paprikations/",
+				"/Users/joshuaslate/workspace/tf-workspace.code-workspace",
 				"--extensionDevelopmentPath=${workspaceFolder}"
 			],
 			"outFiles": [

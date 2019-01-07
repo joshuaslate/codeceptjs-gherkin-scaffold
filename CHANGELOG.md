@@ -1,7 +1,8 @@
 # Change Log
 All notable changes to the "codeceptjs-gherkin-scaffold" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 1.0.1
+- Fixed issue where extension failed in workspaces with multiple projects
 
-## [Unreleased]
+## 1.0.0
 - Initial release

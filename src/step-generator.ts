@@ -78,7 +78,13 @@ export class StepGenerator {
   private async updateCodeceptConfig(...newStepsPaths: string[]): Promise<boolean> {
     const usablePaths = newStepsPaths.reduce((accum: string[], stepPath: string) => {
       if (stepPath) {
-        accum.push(`${this.stepDefinitionRoot}/${path.basename(stepPath)}`);
+        const fileName = path.basename(stepPath);
+        const directory = path.dirname(stepPath);
+        const cleanStepPath = this.stepDefinitionRoot.split(path.sep).filter(x => x && x !== '.').join(path.sep);
+        const extraPath = directory.split(cleanStepPath).pop() || '';
+        const fromRootToFile = path.join(extraPath, fileName);
+
+        accum.push(`${this.stepDefinitionRoot}${fromRootToFile}`);
       }
 
       return accum;

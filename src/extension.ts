@@ -3,7 +3,7 @@ import { getWorkspaceFolder } from './utils/workspace-utils';
 import { CodeceptContext } from './codecept-context';
 
 export function activate(context: vscode.ExtensionContext) {
-	const workspaceRoot: string = getWorkspaceFolder(vscode.workspace.workspaceFolders);
+	const workspaceRoot: string = getWorkspaceFolder(vscode.window, vscode.workspace.workspaceFolders);
 	const codeceptContext = new CodeceptContext(workspaceRoot, vscode.window);
 
 	let disposable = vscode.commands.registerCommand('extension.generateStepsFromFeatures', async () => {

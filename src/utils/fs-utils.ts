@@ -73,3 +73,8 @@ export const getFilesRecursively = async (folderOrFile: string): Promise<string[
         resolve([folderOrFile]);
       }
     }));
+
+export const getAbsolutePath = (givenPath: string, workspaceRoot: string): string =>
+  givenPath.startsWith('/')
+    ? path.resolve(givenPath)
+    : path.resolve(workspaceRoot, givenPath);

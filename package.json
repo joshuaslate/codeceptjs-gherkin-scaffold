@@ -2,7 +2,8 @@
 	"name": "codeceptjs-gherkin-scaffold",
 	"displayName": "codeceptjs-gherkin-scaffold",
 	"description": "Generates the boilerplate for a CodeceptJS steps file based on a Gherkin feature file",
-	"version": "1.0.0",
+	"publisher": "joshuaslate",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.30.0"
 	},
@@ -14,6 +15,10 @@
 		"onCommand:extension.generateStepsFromAllFeatures"
 	],
 	"main": "./out/extension.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/joshuaslate/codeceptjs-gherkin-scaffold.git"
+	},
 	"contributes": {
 		"commands": [
 			{
