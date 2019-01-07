@@ -82,9 +82,9 @@ export class StepGenerator {
         const directory = path.dirname(stepPath);
         const cleanStepPath = this.stepDefinitionRoot.split(path.sep).filter(x => x && x !== '.').join(path.sep);
         const extraPath = directory.split(cleanStepPath).pop() || '';
-        const fromRootToFile = path.join(extraPath, fileName);
+        const finalPath = path.join(this.stepDefinitionRoot, extraPath, fileName);
 
-        accum.push(`${this.stepDefinitionRoot}${fromRootToFile}`);
+        accum.push(`${this.stepDefinitionRoot.startsWith(`.${path.sep}`) ? `.${path.sep}` : ''}${finalPath}`);
       }
 
       return accum;

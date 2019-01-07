@@ -12,6 +12,9 @@ After generation, your `codecept.json` file should have been edited to include t
 
 ## Release Notes
 
+### 1.0.2
+Fixed more issues with path updates in codecept.json file
+
 ### 1.0.1
 
 Fixed bug with multiple projects in a given workspace

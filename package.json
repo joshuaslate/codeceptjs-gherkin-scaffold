@@ -1,9 +1,9 @@
 {
 	"name": "codeceptjs-gherkin-scaffold",
-	"displayName": "codeceptjs-gherkin-scaffold",
+	"displayName": "CodeceptJS Gherkin Scaffold",
 	"description": "Generates the boilerplate for a CodeceptJS steps file based on a Gherkin feature file",
 	"publisher": "joshuaslate",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"engines": {
 		"vscode": "^1.30.0"
 	},

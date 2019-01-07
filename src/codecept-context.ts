@@ -73,7 +73,7 @@ export class CodeceptContext implements IDisposable {
     console.log('Root step definitions path refreshed.');
   }
 
-  @Cacheable({ cacheKey: args => args[0], hashKey: CACHE_KEYS.FEATURES_DEFINITION_ROOT })
+  @CacheClear({ cacheKey: args => args[0], hashKey: CACHE_KEYS.FEATURES_DEFINITION_ROOT })
   private async clearCachedFeatureDefinitionsRoot(workspaceRoot: string) {
     console.log('Feature definitions path refreshed.');
   }
